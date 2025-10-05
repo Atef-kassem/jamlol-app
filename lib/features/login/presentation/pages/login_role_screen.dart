@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:obour/features/intro_pages/presentation/widgets/custom_button.dart';
+import 'package:obour/features/login/presentation/pages/roles_screen.dart';
 import 'package:obour/features/login/presentation/widgets/bg_body.dart';
 import 'package:obour/features/login/presentation/widgets/drop_down_container.dart';
 
@@ -50,7 +51,7 @@ class _LoginRoleScreenState extends State<LoginRoleScreen> {
                               SizedBox(height: 48.h,),
                               InkWell(
                                   onTap: () {
-
+Navigator.push(context,MaterialPageRoute(builder: (context) => RolesScreen(),));
                                   },
                                   child: CustomButton(txt: "متابعه"))
                             ],

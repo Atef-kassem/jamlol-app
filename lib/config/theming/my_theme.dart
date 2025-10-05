@@ -24,7 +24,7 @@ class MyThemeData {
       bodySmall: GoogleFonts.tajawal(
         fontSize: 14.sp,
         color: Colors.black,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
       ),
       bodyMedium: GoogleFonts.tajawal(
         fontSize: 18.sp,

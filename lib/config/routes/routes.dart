@@ -3,6 +3,7 @@ import 'package:obour/features/intro_pages/presentation/pages/first_intro_screen
 import 'package:obour/features/intro_pages/presentation/pages/second_intro_screen.dart';
 import 'package:obour/features/login/presentation/pages/login.dart';
 import 'package:obour/features/login/presentation/pages/login_role_screen.dart';
+import 'package:obour/features/login/presentation/pages/roles_screen.dart';
 import 'package:obour/features/splash/presentation/pages/splash_screen.dart';
 
 class RoutesName {
@@ -11,6 +12,7 @@ class RoutesName {
   static const String secondIntroScreen = "secondIntroScreen";
   static const String login = "login";
   static const String loginRole = "loginRole";
+  static const String rolesScreen = "rolesScreen";
   static const String home = "home";
 }
 
@@ -36,6 +38,10 @@ class AppRouter {
       case RoutesName.loginRole:
         return MaterialPageRoute(
           builder: (context) => LoginRoleScreen(),
+        );
+      case RoutesName.rolesScreen:
+        return MaterialPageRoute(
+          builder: (context) => RolesScreen(),
         );
       /*case RoutesName.login:
         return MaterialPageRoute(

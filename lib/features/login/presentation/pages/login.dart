@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text("هل نسيت كلمه المرور؟",style:Theme.of(context).textTheme.bodySmall!.copyWith(
-                                color: Colors.red
+                                color: Colors.red,fontSize: 12.sp
                               )),
                             ],
                           ),

@@ -39,11 +39,11 @@ class IntroText extends StatelessWidget{
           Text("يا هلا فيك! انضم الينا الان واسمتع بتجربه"
             ,style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 color: Color(0XFF898A8D)
-            ),),
+            ), textAlign:TextAlign.center,),
           Text("تسوق ممتعه وسهله عبر تطبيقنا"
             ,style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 color: Color(0XFF898A8D)
-            ),),
+            ), textAlign:TextAlign.center,),
         ],
       ),
     );
