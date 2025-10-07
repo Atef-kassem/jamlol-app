@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:obour/features/intro_pages/presentation/widgets/custom_button.dart';
-import 'package:obour/features/login/presentation/widgets/bg_body.dart';
 import 'package:obour/features/login/presentation/widgets/role_bg.dart';
 import 'package:obour/features/login/presentation/widgets/role_item.dart';
+import 'package:obour/features/sign_up/presentation/pages/sign_up_screen.dart';
 
 class RolesScreen extends StatelessWidget{
   const RolesScreen({super.key});
@@ -14,7 +14,7 @@ class RolesScreen extends StatelessWidget{
       body: Column(
         children: [
           Align(
-              alignment: AlignmentGeometry.topCenter,
+              alignment: AlignmentDirectional.topCenter,
               child: RoleBg()),
           SizedBox(height: 40.h,),
           Row(
@@ -35,7 +35,7 @@ class RolesScreen extends StatelessWidget{
           SizedBox(height: 54.h,),
           InkWell(
               onTap: () {
-                Navigator.push(context,MaterialPageRoute(builder: (context) => RolesScreen(),));
+                Navigator.push(context,MaterialPageRoute(builder: (context) => SignUpScreen(),));
               },
               child: CustomButton(txt: "متابعه"))
 

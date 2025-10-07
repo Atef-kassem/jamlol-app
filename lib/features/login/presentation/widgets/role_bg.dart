@@ -7,7 +7,7 @@ class RoleBg extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: AlignmentGeometry.center,
+      alignment:AlignmentDirectional.center,
       children: [
         Image.asset("assets/images/login_role_bg.png",width: double.infinity,height: 320.h,fit: BoxFit.fitHeight,),
         Container(
@@ -16,8 +16,8 @@ class RoleBg extends StatelessWidget{
           decoration: BoxDecoration(
               color:Colors.black.withOpacity(.5),
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(16.r),
-              bottomRight: Radius.circular(16.r),
+              bottomLeft: Radius.circular(24.r),
+              bottomRight: Radius.circular(24.r),
             )
           ),
           padding: EdgeInsets.all(8),

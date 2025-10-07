@@ -7,18 +7,18 @@ class BgBody extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: AlignmentGeometry.center,
+      alignment: AlignmentDirectional.center,
       children: [
-        Image.asset("assets/images/login_bg.png",width: double.infinity,height: 440.h,fit: BoxFit.fitHeight,),
+        Image.asset("assets/images/login_bg.png",width: double.infinity,height: 440.h),
         Container(
           width: double.infinity,
           height: 440.h,
-          padding: EdgeInsets.all(6),
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             color:Colors.black.withOpacity(.5),
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(16.r),
-              bottomRight: Radius.circular(16.r),
+              bottomLeft: Radius.circular(24.r),
+              bottomRight: Radius.circular(24.r),
             )),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

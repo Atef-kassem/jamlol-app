@@ -21,6 +21,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       controller: widget.controller,
       obscureText: secure ? true : false,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.all(0),
         filled: true,
         fillColor: AppColors.lightGrey,
         hintText: "كلمه المرور",
@@ -42,7 +43,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
           },
           icon: secure
               ? Icon(Icons.visibility_off,
-              color: AppColors.primaryColor,size: 24.sp)
+              color: AppColors.primaryColor,size: 20.sp)
               : Icon(
             Icons.visibility,
             color:AppColors.primaryColor,
@@ -50,7 +51,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
           ),
         ),
         prefixIcon: Icon(Icons.lock,
-          color: AppColors.primaryColor,size: 24.sp,),
+          color: AppColors.primaryColor,size: 20.sp,),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {

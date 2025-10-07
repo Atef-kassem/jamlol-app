@@ -22,6 +22,7 @@ class TextFieldItem extends StatelessWidget{
       controller: controller,
       style: Theme.of(context).textTheme.bodySmall,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.all(0),
 
         hintText: hint,
         hintStyle: Theme.of(context).textTheme.bodySmall,
@@ -33,7 +34,7 @@ class TextFieldItem extends StatelessWidget{
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(32.r),
             borderSide: BorderSide(color:AppColors.greyColor)),
-        prefixIcon:Icon(icon,size: 24.sp,color: AppColors.primaryColor,)
+        prefixIcon:Icon(icon,size: 20.sp,color: AppColors.primaryColor,)
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {

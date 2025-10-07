@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget{
       child: Center(
         child: Text(txt,style:Theme.of(context).textTheme.bodyMedium!.copyWith(
           color: Colors.white,fontWeight: FontWeight.w700
-        )),
+        ), textAlign: TextAlign.center,),
       ),
     );
 

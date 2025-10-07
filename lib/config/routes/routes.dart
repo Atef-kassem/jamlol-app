@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:obour/features/intro_pages/presentation/pages/first_intro_screen.dart';
 import 'package:obour/features/intro_pages/presentation/pages/second_intro_screen.dart';
-import 'package:obour/features/login/presentation/pages/login.dart';
+import 'package:obour/features/login/presentation/pages/login_screen.dart';
 import 'package:obour/features/login/presentation/pages/login_role_screen.dart';
 import 'package:obour/features/login/presentation/pages/roles_screen.dart';
+import 'package:obour/features/reset_password/presentation/pages/reset_password_screen.dart';
+import 'package:obour/features/sign_up/presentation/pages/sign_up_screen.dart';
 import 'package:obour/features/splash/presentation/pages/splash_screen.dart';
 
 class RoutesName {
@@ -11,8 +13,10 @@ class RoutesName {
   static const String firstIntroScreen = "firstIntroScreen";
   static const String secondIntroScreen = "secondIntroScreen";
   static const String login = "login";
+  static const String signUp = "signUp";
   static const String loginRole = "loginRole";
   static const String rolesScreen = "rolesScreen";
+  static const String resetPassScreen = "resetPassScreen";
   static const String home = "home";
 }
 
@@ -43,10 +47,15 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => RolesScreen(),
         );
-      /*case RoutesName.login:
+      case RoutesName.signUp:
         return MaterialPageRoute(
-          builder: (context) => LoginScreen(),
+          builder: (context) => SignUpScreen(),
         );
+      case RoutesName.resetPassScreen:
+        return MaterialPageRoute(
+          builder: (context) => ResetPasswordScreen(),
+        );
+      /*
       case RoutesName.home:
         return MaterialPageRoute(
           builder: (context) => HomeScreen(),

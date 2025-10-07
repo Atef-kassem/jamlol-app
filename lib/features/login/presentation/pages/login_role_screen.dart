@@ -20,12 +20,12 @@ class _LoginRoleScreenState extends State<LoginRoleScreen> {
       body: Stack(
         children: [
           Align(
-              alignment: AlignmentGeometry.topCenter,
+              alignment: AlignmentDirectional.topCenter,
               child: BgBody()),
           Positioned(
             top: 220,
             child: Align(
-              alignment: AlignmentGeometry.center,
+              alignment: AlignmentDirectional.center,
               child: Container(
                 height: MediaQuery.of(context).size.height /2,
                 width: MediaQuery.of(context).size.width,
