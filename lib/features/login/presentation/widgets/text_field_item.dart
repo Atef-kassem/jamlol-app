@@ -20,12 +20,16 @@ class TextFieldItem extends StatelessWidget{
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      style: Theme.of(context).textTheme.bodySmall,
+      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+          color: AppColors.darkGrey,fontSize: 12.sp
+      ),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.all(0),
 
         hintText: hint,
-        hintStyle: Theme.of(context).textTheme.bodySmall,
+        hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+          color: AppColors.darkGrey,fontSize: 12.sp
+        ),
         filled: true,
         fillColor: AppColors.lightGrey,
         enabledBorder: OutlineInputBorder(

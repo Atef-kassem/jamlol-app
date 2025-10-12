@@ -6,6 +6,7 @@ import 'package:obour/features/login/presentation/pages/login_role_screen.dart';
 import 'package:obour/features/login/presentation/pages/roles_screen.dart';
 import 'package:obour/features/reset_password/presentation/pages/reset_password_screen.dart';
 import 'package:obour/features/sign_up/presentation/pages/sign_up_screen.dart';
+import 'package:obour/features/sign_up/presentation/pages/sign_up_second_screen.dart' show SignUpSecondScreen;
 import 'package:obour/features/splash/presentation/pages/splash_screen.dart';
 
 class RoutesName {
@@ -14,6 +15,7 @@ class RoutesName {
   static const String secondIntroScreen = "secondIntroScreen";
   static const String login = "login";
   static const String signUp = "signUp";
+  static const String secondSignUp = "secondSignUp";
   static const String loginRole = "loginRole";
   static const String rolesScreen = "rolesScreen";
   static const String resetPassScreen = "resetPassScreen";
@@ -50,6 +52,10 @@ class AppRouter {
       case RoutesName.signUp:
         return MaterialPageRoute(
           builder: (context) => SignUpScreen(),
+        );
+      case RoutesName.secondSignUp:
+        return MaterialPageRoute(
+          builder: (context) => SignUpSecondScreen(),
         );
       case RoutesName.resetPassScreen:
         return MaterialPageRoute(

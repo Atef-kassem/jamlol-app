@@ -17,7 +17,9 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style:Theme.of(context).textTheme.bodySmall,
+      style:Theme.of(context).textTheme.bodySmall!.copyWith(
+          color: AppColors.darkGrey,fontSize: 12.sp
+      ),
       controller: widget.controller,
       obscureText: secure ? true : false,
       decoration: InputDecoration(
@@ -25,7 +27,9 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
         filled: true,
         fillColor: AppColors.lightGrey,
         hintText: "كلمه المرور",
-        hintStyle:Theme.of(context).textTheme.bodySmall,
+        hintStyle:Theme.of(context).textTheme.bodySmall!.copyWith(
+            color: AppColors.darkGrey,fontSize: 12.sp
+        ),
         enabledBorder: OutlineInputBorder(
             borderRadius:
             BorderRadius.circular(30.r),

@@ -6,6 +6,7 @@ import 'package:obour/features/login/presentation/widgets/bg_body.dart';
 import 'package:obour/features/login/presentation/widgets/password_input_field.dart';
 import 'package:obour/features/login/presentation/widgets/text_field_item.dart';
 import 'package:obour/features/reset_password/presentation/pages/reset_password_screen.dart';
+import 'package:obour/features/sign_up/presentation/pages/sign_up_second_screen.dart';
 
 class SignUpScreen extends StatefulWidget{
   const SignUpScreen({super.key});
@@ -15,8 +16,9 @@ class SignUpScreen extends StatefulWidget{
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   var formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -65,19 +67,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   SizedBox(height: 10.h,),
                                   Text("الاسم",style:Theme.of(context).textTheme.bodySmall),
                                   SizedBox(height: 10.h,),
-                                  TextFieldItem(controller: phoneController, hint:"الاسم", icon:Icons.text_fields, validateTxt: "Please enter your name"),
+                                  TextFieldItem(controller: nameController, hint:"الاسم", icon:Icons.text_fields, validateTxt: "Please enter your name"),
                                   SizedBox(height: 24.h,),
-                                  Text("العمر",style:Theme.of(context).textTheme.bodySmall),
+                                  Text("اسم المستخدم",style:Theme.of(context).textTheme.bodySmall),
                                   SizedBox(height: 10.h,),
-                                  TextFieldItem(controller: phoneController, hint:"العمر", icon:Icons.text_fields, validateTxt: "Please enter your age"),
+                                  TextFieldItem(controller: userNameController, hint:"اسم المستخدم", icon:Icons.person, validateTxt: "Please enter your user name"),
                                   SizedBox(height: 24.h,),
-                                  Text("كلمه المرور",style:Theme.of(context).textTheme.bodySmall),
+                                  Text("العنوان",style:Theme.of(context).textTheme.bodySmall),
                                   SizedBox(height: 10.h,),
-                                  PasswordInputField(controller: passwordController),
+                                  TextFieldItem(controller: addressController, hint:"العنوان",
+                                      icon:Icons.location_city, validateTxt: "Please enter your address"),
                                   SizedBox(height: 40.h,),
                                   InkWell(
                                       onTap: () {
-                                        Navigator.push(context,MaterialPageRoute(builder: (context) => ResetPasswordScreen(),));
+                                        Navigator.push(context,MaterialPageRoute(builder: (context) => SignUpSecondScreen(),));
                                       },
                                       child: CustomButton(txt: "تسجيل دخول"))
                                 ],

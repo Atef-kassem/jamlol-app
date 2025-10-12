@@ -75,7 +75,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                   SizedBox(height: 16.h,),
                                   Text("البريد الالكتروني",style:Theme.of(context).textTheme.bodySmall),
                                   SizedBox(height: 10.h,),
-                                  TextFieldItem(controller: emailController, hint:"البريد الالكتروني", icon:Icons.text_fields, validateTxt: "Please enter your name"),
+                                  TextFieldItem(controller: emailController, hint:"البريد الالكتروني", icon:Icons.text_fields, validateTxt: "Please enter your email"),
                                   SizedBox(height: 40.h,),
                                   InkWell(
                                       onTap: () {
