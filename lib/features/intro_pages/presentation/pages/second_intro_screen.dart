@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:obour/config/routes/routes.dart';
 import 'package:obour/core/utils/app_colors.dart';
-import 'package:obour/features/intro_pages/presentation/widgets/custom_button.dart';
+import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/features/intro_pages/presentation/widgets/intro_text.dart';
 
 class SecondIntroScreen extends StatelessWidget{

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:obour/features/intro_pages/presentation/widgets/custom_button.dart';
+import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/features/login/presentation/pages/login_role_screen.dart';
 import 'package:obour/features/login/presentation/widgets/bg_body.dart';
 import 'package:obour/features/login/presentation/widgets/password_input_field.dart';
-import 'package:obour/features/login/presentation/widgets/text_field_item.dart';
+import 'package:obour/core/utils/components/text_field_item.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

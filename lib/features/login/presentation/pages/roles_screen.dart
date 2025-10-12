@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:obour/features/intro_pages/presentation/widgets/custom_button.dart';
+import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/features/login/presentation/widgets/role_bg.dart';
 import 'package:obour/features/login/presentation/widgets/role_item.dart';
 import 'package:obour/features/sign_up/presentation/pages/sign_up_screen.dart';
