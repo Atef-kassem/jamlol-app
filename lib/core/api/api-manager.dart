@@ -5,17 +5,29 @@ class ApiManager {
   final Dio dio;
 
   ApiManager({Dio? dioInstance}) : dio = dioInstance ?? Dio() {
-    dio.options.headers = {
-      "Accept": "*/*",
-      "Content-Type": "multipart/form-data",
-    };
+    dio.options.headers = {"Accept": "*/*", "Content-Type": "application/json"};
+
+    /*dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          final prefs = await SharedPreferences.getInstance();
+          final token = prefs.getString("token");
+
+          if (token != null && token.isNotEmpty) {
+            options.headers["Authorization"] = "Bearer $token";
+          }
+
+          return handler.next(options);
+        },
+      ),
+    );*/
   }
 
   Options _options({Map<String, dynamic>? extraHeaders}) {
     return Options(
       headers: {
         "Accept": "*/*",
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
         ...?extraHeaders,
       },
     );
@@ -27,7 +39,7 @@ class ApiManager {
   }) async {
     try {
       return await dio.get(
-        Constants.baseUrl +endPoint,
+        Constants.baseUrl + endPoint,
         queryParameters: queryParameters,
         options: _options(),
       );
@@ -38,12 +50,12 @@ class ApiManager {
 
   Future<Response> postData(
     String endPoint, {
-    FormData? body,
+    Map<String, dynamic>? body,
     Map<String, dynamic>? extraHeaders,
   }) async {
     try {
       return await dio.post(
-        Constants.baseUrl +endPoint,
+        Constants.baseUrl + endPoint,
         data: body,
         options: _options(extraHeaders: extraHeaders),
       );
@@ -51,5 +63,4 @@ class ApiManager {
       rethrow;
     }
   }
-
 }

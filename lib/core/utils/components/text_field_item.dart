@@ -38,6 +38,9 @@ class TextFieldItem extends StatelessWidget{
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(32.r),
             borderSide: BorderSide(color:AppColors.greyColor)),
+        errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(32.r),
+            borderSide: BorderSide(color:Colors.red)),
         prefixIcon:Icon(icon,size: 20.sp,color: AppColors.primaryColor,)
       ),
       validator: (value) {

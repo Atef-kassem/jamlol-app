@@ -5,7 +5,7 @@ import 'package:obour/features/reset_password/presentation/pages/reset_password_
 import 'package:obour/features/sign_up/presentation/widgets/menu_drop_container.dart';
 import 'package:obour/features/sign_up/presentation/widgets/upload_image_field.dart';
 import '../../../../core/utils/components/custom_button.dart';
-import '../../../login/presentation/widgets/password_input_field.dart';
+import '../../../../core/utils/components/password_input_field.dart';
 
 class SignUpSecondScreen extends StatefulWidget{
   const SignUpSecondScreen({super.key});

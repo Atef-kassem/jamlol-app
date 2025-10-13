@@ -1,38 +1,54 @@
-
-
 import 'package:obour/core/errors/failures.dart';
 
 class StatusCodeHandler {
   static Failures handleStatusCode(int? statusCode, dynamic data) {
-    switch (statusCode) {
-      case 200:
-      case 201:
-        return ServerFailure("Success");
+    final message = _extractMessage(data);
 
+    switch (statusCode) {
       case 400:
-        return ServerFailure("Bad Request: ${_extractMessage(data)}");
+        return ServerFailure("Bad Request: $message");
+
       case 401:
-        return ServerFailure("Unauthorized: ${_extractMessage(data)}");
+        return ServerFailure(message.isNotEmpty ? message : "Unauthorized request.");
+
       case 403:
-        return ServerFailure("Forbidden: ${_extractMessage(data)}");
+        return ServerFailure("Forbidden: $message");
+
       case 404:
-        return ServerFailure("Not Found: ${_extractMessage(data)}");
+        return ServerFailure("Not Found: $message");
+
+      case 422:
+        return ServerFailure("Validation Error: $message");
+
       case 500:
-        return ServerFailure("Internal Server Error: ${_extractMessage(data)}");
+        return ServerFailure("Internal Server Error: $message");
+
       case 502:
-        return ServerFailure("Bad Gateway: ${_extractMessage(data)}");
+        return ServerFailure("Bad Gateway: $message");
+
       case 503:
-        return ServerFailure("Service Unavailable: ${_extractMessage(data)}");
+        return ServerFailure("Service Unavailable: $message");
+
       default:
-        return ServerFailure("Unexpected Error (code: $statusCode) - ${_extractMessage(data)}");
+        return ServerFailure("Unexpected Error (code: $statusCode): $message");
     }
   }
 
   static String _extractMessage(dynamic data) {
-    if (data == null) return "No details";
-    if (data is Map && data.containsKey("message")) {
-      return data["message"];
+    if (data == null) return "No details provided.";
+
+    try {
+      if (data is Map<String, dynamic>) {
+        if (data.containsKey("message") && data["message"] is String) {
+          return data["message"]!;
+        }
+        if (data.containsKey("error")) return data["error"].toString();
+        if (data.containsKey("detail")) return data["detail"].toString();
+      }
+      return data.toString();
+    } catch (e) {
+      return "Failed to parse error message.";
     }
-    return data.toString();
   }
 }
+

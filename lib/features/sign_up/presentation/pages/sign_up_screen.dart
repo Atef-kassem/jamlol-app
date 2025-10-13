@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:obour/core/utils/app_colors.dart';
 import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/features/login/presentation/widgets/bg_body.dart';
-import 'package:obour/features/login/presentation/widgets/password_input_field.dart';
+import 'package:obour/core/utils/components/password_input_field.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
 import 'package:obour/features/reset_password/presentation/pages/reset_password_screen.dart';
 import 'package:obour/features/sign_up/presentation/pages/sign_up_second_screen.dart';

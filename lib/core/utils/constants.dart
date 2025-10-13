@@ -1,3 +1,3 @@
 class Constants {
-   static final String baseUrl="https://fallback-base-url.com";
+   static final String baseUrl="https://jamlole.digitalelite.com.sa/api/v1";
 }

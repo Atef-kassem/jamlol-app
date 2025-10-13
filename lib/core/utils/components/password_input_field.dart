@@ -40,6 +40,9 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
             BorderRadius.circular(30.r),
             borderSide: BorderSide(
                 color: AppColors.greyColor)),
+        errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(32.r),
+            borderSide: BorderSide(color:Colors.red)),
         suffixIcon: IconButton(
           onPressed: () {
             secure = !secure;
