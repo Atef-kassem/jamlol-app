@@ -1,5 +1,6 @@
 class EndPoints{
   static const String login= "/auth/login";
+  static const String signUp= "/auth/signup";
   static const String addSignature = "/Api/Add_signature";
   static const String getAgazaList = "/Api/Get_agaza_List";
   static const String getAgazaData = "/Api/Get_Agaza_data";

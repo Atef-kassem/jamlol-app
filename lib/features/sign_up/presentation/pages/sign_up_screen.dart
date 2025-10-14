@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:obour/config/routes/routes.dart';
 import 'package:obour/core/utils/app_colors.dart';
 import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/features/login/presentation/widgets/bg_body.dart';
-import 'package:obour/core/utils/components/password_input_field.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
-import 'package:obour/features/reset_password/presentation/pages/reset_password_screen.dart';
 import 'package:obour/features/sign_up/presentation/pages/sign_up_second_screen.dart';
 
 class SignUpScreen extends StatefulWidget{
@@ -80,9 +79,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   SizedBox(height: 40.h,),
                                   InkWell(
                                       onTap: () {
-                                        Navigator.push(context,MaterialPageRoute(builder: (context) => SignUpSecondScreen(),));
+                                        Navigator.pushNamed(context,RoutesName.secondSignUp,arguments:{
+                                          'name':nameController.text,
+                                          'userName': userNameController.text,
+                                          'address': addressController.text,
+                                        });
                                       },
-                                      child: CustomButton(txt: "تسجيل دخول"))
+                                      child: CustomButton(txt: "متابعه"))
                                 ],
                               ),
                             )),

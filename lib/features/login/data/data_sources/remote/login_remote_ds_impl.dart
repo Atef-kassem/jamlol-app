@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:obour/core/api/api-manager.dart';
 import 'package:obour/core/api/end_points.dart';
 import 'package:obour/core/api/status_code_handler.dart';
+import 'package:obour/core/cache/shared_preferences.dart';
 import 'package:obour/core/errors/error_handler.dart';
 import 'package:obour/core/errors/failures.dart';
 import 'package:obour/features/login/data/data_sources/remote/login_remote_ds.dart';
@@ -30,6 +30,8 @@ class LoginRemoteDsImpl implements LoginRemoteDs {
       if (response.statusCode == 200) {
         LoginModel model = LoginModel.fromJson(response.data);
         if (model.status == "success") {
+          CacheData.saveData(data: model?.token ?? "no token", key: "token");
+          print("token++++++++++++++++${CacheData.getData(key: "token")}");
           return Right(model);
         } else {
           final errorMessage = response.data['message'] ?? "Login failed.";

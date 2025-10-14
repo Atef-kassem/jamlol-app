@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(height: 10.h),
+                                    SizedBox(height: 16.h),
                                     Text(
                                       "البريد الالكتروني",
                                       style: Theme.of(
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       icon: Icons.text_fields,
                                       validateTxt: "Please enter your email",
                                     ),
-                                    SizedBox(height: 32.h),
+                                    SizedBox(height: 24.h),
                                     Text(
                                       "كلمه المرور",
                                       style: Theme.of(
