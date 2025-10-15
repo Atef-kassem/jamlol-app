@@ -22,19 +22,19 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  List<String> statusList=["active","inActive"];
-  List<String> personTypeList=["admin","supplier","client","carrier"];
+  List<String> statusList = ["active", "inActive"];
+  String? selectedStatus;
+  List<String> personTypeList = ["admin", "supplier", "client", "carrier"];
+  String? selectedPersonType;
   var formKey = GlobalKey<FormState>();
   Map<String, dynamic>? args;
 
   void didChangeDependencies() {
     super.didChangeDependencies();
-    args = ModalRoute
-        .of(context)
-        ?.settings
-        .arguments as Map<String, dynamic>?;
+    args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
   }
-    @override
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SignUpCubit(),
@@ -110,7 +110,16 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                         ).textTheme.bodySmall,
                                       ),
                                       SizedBox(height: 10.h),
-                                      MenuDropContainer(txt: "الحالة"),
+                                      MenuDropContainer(
+                                        label: 'الحالة',
+                                        list: statusList,
+                                        initialValue: selectedStatus,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            selectedStatus = value;
+                                          });
+                                        },
+                                      ),
                                     ],
                                   ),
                                   Column(
@@ -124,7 +133,16 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                         ).textTheme.bodySmall,
                                       ),
                                       SizedBox(height: 10.h),
-                                      MenuDropContainer(txt: "عميل/ناقل"),
+                                      MenuDropContainer(
+                                        label: 'الدور',
+                                        list: personTypeList,
+                                        initialValue: selectedPersonType,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            selectedPersonType = value;
+                                          });
+                                        },
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -185,14 +203,14 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                             true) {
                                           SignUpCubit.get(context).signUp(
                                             roleId: 1,
-                                            name: args?["name"]??"",
-                                            userName: args?["userName"]??"",
-                                            address: args?["address"]??"",
+                                            name: args?["name"] ?? "",
+                                            userName: args?["userName"] ?? "",
+                                            address: args?["address"] ?? "",
                                             email: emailController.text,
                                             password: passwordController.text,
                                             phone: phoneController.text,
-                                            status: "active",
-                                            personType: "admin",
+                                            status: selectedStatus??"",
+                                            personType: selectedPersonType??"",
                                           );
                                         }
                                       },
