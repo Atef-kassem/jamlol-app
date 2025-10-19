@@ -27,15 +27,16 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   List<String> statusList = ["active", "inActive"];
-  String? selectedStatus;
+  String? selectedStatus="active";
   List<String> personTypeList = ["admin", "supplier", "client", "carrier"];
-  String? selectedPersonType;
+  String? selectedPersonType="client";
   var formKey = GlobalKey<FormState>();
   Map<String, dynamic>? args;
 
   void didChangeDependencies() {
     super.didChangeDependencies();
     args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+    print('✅ Received args: $args');
   }
 
   @override
@@ -155,8 +156,7 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                                   AddSupplier(),
                                             ),
                                           );
-                                        } else if (selectedPersonType ==
-                                            "client") {
+                                        } else if (selectedPersonType == "client") {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
@@ -179,6 +179,10 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                       onTap: () {
                                         if (formKey.currentState?.validate() ==
                                             true) {
+                                          print(" selectedStatus $selectedStatus" );
+                                          print(" name ${ args?["name"] }" );
+                                          print(" selectedperson type $selectedPersonType" );
+                                          print(" address ${ args?["address"] }" );
                                           SignUpCubit.get(context).signUp(
                                             roleId: 1,
                                             name: args?["name"] ?? "",

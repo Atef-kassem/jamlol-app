@@ -59,6 +59,7 @@ class AppRouter {
         );
       case RoutesName.secondSignUp:
         return MaterialPageRoute(
+          settings: settings,
           builder: (context) => SignUpSecondScreen(),
         );
       case RoutesName.resetPassScreen:

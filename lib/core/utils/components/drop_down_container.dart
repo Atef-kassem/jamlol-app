@@ -10,7 +10,7 @@ class DropDownContainer extends StatelessWidget{
   Widget build(BuildContext context) {
     return Container(
       height: 56.h,
-      width: MediaQuery.of(context).size.width-60,
+      width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: AppColors.lightGrey,

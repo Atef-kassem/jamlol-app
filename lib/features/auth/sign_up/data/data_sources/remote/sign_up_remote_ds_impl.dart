@@ -6,6 +6,7 @@ import 'package:obour/core/api/status_code_handler.dart';
 import 'package:obour/core/cache/shared_preferences.dart';
 import 'package:obour/core/errors/error_handler.dart';
 import 'package:obour/core/errors/failures.dart';
+import 'package:obour/core/helper/user_manager/user_manager.dart';
 import 'package:obour/features/auth/sign_up/data/data_sources/remote/sign_up_remote_ds.dart';
 import 'package:obour/features/auth/sign_up/data/models/sign_up_model.dart';
 
@@ -47,7 +48,10 @@ class SignUpRemoteDsImpl implements SignUpRemoteDs {
       if (response.statusCode == 200||response.statusCode == 201) {
         SignUpModel model = SignUpModel.fromJson(response.data);
         if (model.status == "success") {
-          CacheData.saveData(data:model.data?.user, key: "SignUpUser");
+          final userData = model.data?.user as SignUpUserModel;
+          if (userData != null) {
+            await UserManager().saveUser(userData);
+          }
           return Right(model);
         } else {
           final errorMessage = response.data['message'] ?? "sign up failed.";

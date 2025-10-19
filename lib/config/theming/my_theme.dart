@@ -39,9 +39,11 @@ class MyThemeData {
       ),
     ),
     appBarTheme: AppBarTheme(
+      centerTitle: true,
       backgroundColor: Colors.white,
       elevation: 0,
       shadowColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
       titleTextStyle: GoogleFonts.tajawal(
         fontSize: 22.sp,
         fontWeight: FontWeight.w700,

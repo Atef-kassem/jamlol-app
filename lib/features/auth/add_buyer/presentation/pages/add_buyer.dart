@@ -1,20 +1,23 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:obour/core/cache/shared_preferences.dart';
+import 'package:obour/core/helper/user_manager/user_manager.dart';
 import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/core/utils/components/drop_down_container.dart';
-import 'package:obour/core/utils/components/password_input_field.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
 import 'package:obour/features/auth/sign_up/presentation/widgets/label_text.dart';
 import 'package:obour/features/auth/sign_up/presentation/widgets/menu_drop_container.dart';
 
-class AddSupplier extends StatefulWidget{
-  const AddSupplier({super.key});
+class AddBuyer extends StatefulWidget{
+  const AddBuyer({super.key});
 
   @override
-  State<AddSupplier> createState() => _AddSupplierState();
+  State<AddBuyer> createState() => _AddBuyerState();
 }
 
-class _AddSupplierState extends State<AddSupplier> {
+class _AddBuyerState extends State<AddBuyer> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
@@ -23,12 +26,21 @@ class _AddSupplierState extends State<AddSupplier> {
   List<String> buyerTypeList = ["مؤسسه","فرد"];
   String? selectedPersonType;
   var formKey = GlobalKey<FormState>();
-  Map<String, dynamic>? args;
 
-  void didChangeDependencies(){
-    super.didChangeDependencies();
-    args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
   }
+
+  Future<void> _loadUserData() async {
+      setState(() {
+        nameController.text =UserManager().user?.username??"";
+        phoneController.text = UserManager().user?.phone??"";
+        addressController.text =UserManager().user?.address??"";
+      });
+    }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

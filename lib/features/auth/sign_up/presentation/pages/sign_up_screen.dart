@@ -80,11 +80,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   SizedBox(height: 40.h,),
                                   InkWell(
                                       onTap: () {
+                                        if (formKey.currentState?.validate() ==
+                                            true) {
+                                          print("name${nameController.text}");
                                         Navigator.pushNamed(context,RoutesName.secondSignUp,arguments:{
                                           'name':nameController.text,
                                           'userName': userNameController.text,
                                           'address': addressController.text,
-                                        });
+                                        });}
                                       },
                                       child: CustomButton(txt: "متابعه"))
                                 ],
