@@ -4,7 +4,6 @@ import 'package:obour/config/theming/my_theme.dart';
 import 'package:obour/l10n/app_localizations.dart';
 import 'config/routes/routes.dart';
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

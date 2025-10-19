@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:obour/core/utils/app_colors.dart';
 
 class DropDownContainer extends StatelessWidget{
-  const DropDownContainer({super.key});
+  final String txt;
+  const DropDownContainer({super.key,required this.txt});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class DropDownContainer extends StatelessWidget{
       ),
       child: Row(
         children: [
-          Text("عميل/ناقل",style: Theme.of(context).textTheme.bodySmall!.copyWith(
+          Text(txt,style: Theme.of(context).textTheme.bodySmall!.copyWith(
             color: AppColors.darkGrey,
           ),),
           Spacer(),

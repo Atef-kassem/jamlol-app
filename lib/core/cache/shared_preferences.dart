@@ -32,6 +32,14 @@ class CacheData {
     return value;
   }
 
+  static Map<String, dynamic>? getJsonData({required String key}) {
+    final data = preferences.getString(key);
+    if (data != null) {
+      return jsonDecode(data);
+    }
+    return null;
+  }
+
   static Future<bool> removeData(String key) async {
     return await preferences.remove(key);
   }

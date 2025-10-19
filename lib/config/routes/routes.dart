@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:obour/features/auth/add_buyer/presentation/pages/add_buyer.dart';
+import 'package:obour/features/auth/add_supplier/presentation/pages/add_supplier.dart';
+import 'package:obour/features/auth/login/presentation/pages/login_role_screen.dart';
+import 'package:obour/features/auth/login/presentation/pages/login_screen.dart';
+import 'package:obour/features/auth/login/presentation/pages/roles_screen.dart';
+import 'package:obour/features/auth/reset_password/presentation/pages/reset_password_screen.dart';
+import 'package:obour/features/auth/sign_up/presentation/pages/sign_up_screen.dart';
+import 'package:obour/features/auth/sign_up/presentation/pages/sign_up_second_screen.dart';
 import 'package:obour/features/intro_pages/presentation/pages/first_intro_screen.dart';
 import 'package:obour/features/intro_pages/presentation/pages/second_intro_screen.dart';
-import 'package:obour/features/login/presentation/pages/login_screen.dart';
-import 'package:obour/features/login/presentation/pages/login_role_screen.dart';
-import 'package:obour/features/login/presentation/pages/roles_screen.dart';
-import 'package:obour/features/reset_password/presentation/pages/reset_password_screen.dart';
-import 'package:obour/features/sign_up/presentation/pages/sign_up_screen.dart';
-import 'package:obour/features/sign_up/presentation/pages/sign_up_second_screen.dart' show SignUpSecondScreen;
 import 'package:obour/features/splash/presentation/pages/splash_screen.dart';
 
 class RoutesName {
@@ -19,6 +21,8 @@ class RoutesName {
   static const String loginRole = "loginRole";
   static const String rolesScreen = "rolesScreen";
   static const String resetPassScreen = "resetPassScreen";
+  static const String addBuyer = "addBuyer";
+  static const String addSupplier="addSupplier";
   static const String home = "home";
 }
 
@@ -60,6 +64,14 @@ class AppRouter {
       case RoutesName.resetPassScreen:
         return MaterialPageRoute(
           builder: (context) => ResetPasswordScreen(),
+        );
+      case RoutesName.addBuyer:
+        return MaterialPageRoute(
+          builder: (context) => AddBuyer(),
+        );
+      case RoutesName.addSupplier:
+        return MaterialPageRoute(
+          builder: (context) => AddSupplier(),
         );
       /*
       case RoutesName.home:
