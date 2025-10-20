@@ -1,14 +1,12 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:obour/core/cache/shared_preferences.dart';
 import 'package:obour/core/helper/user_manager/user_manager.dart';
 import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/core/utils/components/drop_down_container.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
 import 'package:obour/features/auth/sign_up/presentation/widgets/label_text.dart';
 import 'package:obour/features/auth/sign_up/presentation/widgets/menu_drop_container.dart';
+import 'package:obour/features/home/presentation/pages/home_screen.dart';
 
 class AddBuyer extends StatefulWidget{
   const AddBuyer({super.key});
@@ -21,7 +19,7 @@ class _AddBuyerState extends State<AddBuyer> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
-  List<String> statusList = ["نشط", "غير نشط"];
+  List<String> statusList = ["active", "inActive"];
   String? selectedStatus;
   List<String> buyerTypeList = ["مؤسسه","فرد"];
   String? selectedPersonType;
@@ -38,6 +36,7 @@ class _AddBuyerState extends State<AddBuyer> {
         nameController.text =UserManager().user?.username??"";
         phoneController.text = UserManager().user?.phone??"";
         addressController.text =UserManager().user?.address??"";
+        selectedStatus=UserManager().user?.status??"";
       });
     }
 
@@ -137,11 +136,9 @@ class _AddBuyerState extends State<AddBuyer> {
                       children: [
                          InkWell(
                             onTap: () {
-                              if (formKey.currentState?.validate() ==
-                                  true) {
-                              }
+                             Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
                             },
-                            child: CustomButton(txt: "تسجيل دخول"),
+                            child: CustomButton(txt: "دخول للصفحه الرئيسية"),
                           ),
                       ],
                     ),

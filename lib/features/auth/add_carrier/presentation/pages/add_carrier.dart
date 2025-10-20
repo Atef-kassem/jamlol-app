@@ -8,18 +8,19 @@ import 'package:obour/features/auth/sign_up/presentation/widgets/label_text.dart
 import 'package:obour/features/auth/sign_up/presentation/widgets/menu_drop_container.dart';
 import 'package:obour/features/home/presentation/pages/home_screen.dart';
 
-class AddSupplier extends StatefulWidget{
-  const AddSupplier({super.key});
+class AddCarrier extends StatefulWidget{
+  const AddCarrier({super.key});
 
   @override
-  State<AddSupplier> createState() => _AddSupplierState();
+  State<AddCarrier> createState() => _AddCarrierState();
 }
 
-class _AddSupplierState extends State<AddSupplier> {
+class _AddCarrierState extends State<AddCarrier> {
   final TextEditingController companyNameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
+  final TextEditingController idController = TextEditingController();
   List<String> statusList = ["active", "inActive"];
   String? selectedStatus;
   List<String> supplierTypeList = ["مؤسسه","فرد"];
@@ -45,7 +46,7 @@ class _AddSupplierState extends State<AddSupplier> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title: Text("مورد"),
+        title: Text("ناقل"),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -58,10 +59,9 @@ class _AddSupplierState extends State<AddSupplier> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    LabelText(txt: "اسم المؤسسه"),
+                    LabelText(txt: "اختيار مستخدم موجود"),
                     SizedBox(height: 10.h,),
-                    TextFieldItem(controller: companyNameController, hint:"اسم المؤسسه", icon:Icons.text_fields,
-                        validateTxt: "Please enter your company name"),
+                    DropDownContainer(txt: "بدون اختيار"),
                     SizedBox(height: 24.h),
                     LabelText(
                       txt:"رقم الجوال",),
@@ -73,27 +73,15 @@ class _AddSupplierState extends State<AddSupplier> {
                       validateTxt: "Please enter your phone number",
                     ),
                     SizedBox(height: 24.h),
-                    LabelText(txt: "اختيار مستخدم موجود"),
+                    LabelText(txt: "اسم الناقل"),
                     SizedBox(height: 10.h,),
-                    DropDownContainer(txt: "بدون اختيار"),
-                    SizedBox(height: 24.h),
-                    LabelText(txt: "اسم المورد"),
-                    SizedBox(height: 10.h,),
-                    TextFieldItem(controller: nameController, hint:"اسم المورد", icon:Icons.text_fields,
+                    TextFieldItem(controller: nameController, hint:"اسم الناقل", icon:Icons.text_fields,
                         validateTxt: "Please enter your name"),
-                    SizedBox(height: 24.h),
-                    LabelText(txt: "نوع المورد"),
-                    SizedBox(height: 10.h,),
-                    DropDownContainer(txt: "نوع المورد"),
                     SizedBox(height: 24.h),
                     LabelText(txt: "رقم الهويه"),
                     SizedBox(height: 10.h,),
-                    TextFieldItem(controller: nameController, hint:"رقم الهويه", icon:Icons.text_fields,
+                    TextFieldItem(controller: idController, hint:"رقم الهويه", icon:Icons.text_fields,
                         validateTxt: "Please enter your id number"),
-                    SizedBox(height: 24.h),
-                    LabelText(txt: "المنطقه"),
-                    SizedBox(height: 10.h,),
-                    DropDownContainer(txt: "اختر المنطقه"),
                     SizedBox(height: 24.h),
                     LabelText(txt: "العنوان"),
                     SizedBox(height: 10.h,),
@@ -129,11 +117,11 @@ class _AddSupplierState extends State<AddSupplier> {
                           CrossAxisAlignment.start,
                           children: [
                             LabelText(
-                              txt:"نوع الكيان",
+                              txt:"نوع الناقل",
                             ),
                             SizedBox(height: 10.h),
                             MenuDropContainer(
-                              label: 'نوع الكيان',
+                              label: 'نوع الناقل',
                               list:supplierTypeList,
                               initialValue: selectedPersonType,
                               onChanged: (value) {
@@ -146,6 +134,10 @@ class _AddSupplierState extends State<AddSupplier> {
                         ),
                       ],
                     ),
+                    SizedBox(height: 24.h),
+                    LabelText(txt: "المناطق المخدومه"),
+                    SizedBox(height: 10.h,),
+                    DropDownContainer(txt: "اختر المنطقه"),
                     SizedBox(height: 40.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

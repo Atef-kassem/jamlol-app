@@ -8,6 +8,7 @@ import 'package:obour/core/utils/components/password_input_field.dart';
 import 'package:obour/core/utils/components/snack_bar_helper.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
 import 'package:obour/features/auth/add_buyer/presentation/pages/add_buyer.dart';
+import 'package:obour/features/auth/add_carrier/presentation/pages/add_carrier.dart';
 import 'package:obour/features/auth/add_supplier/presentation/pages/add_supplier.dart';
 import 'package:obour/features/auth/reset_password/presentation/pages/reset_password_screen.dart';
 import 'package:obour/features/auth/sign_up/presentation/manager/sign_up_cubit.dart';
@@ -162,6 +163,14 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                             MaterialPageRoute(
                                               builder: (context) =>
                                                   AddBuyer(),
+                                            ),
+                                          );
+                                        }else if (selectedPersonType == "carrier") {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  AddCarrier(),
                                             ),
                                           );
                                         } else {

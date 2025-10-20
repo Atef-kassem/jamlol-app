@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:obour/features/auth/add_buyer/presentation/pages/add_buyer.dart';
+import 'package:obour/features/auth/add_carrier/presentation/pages/add_carrier.dart';
 import 'package:obour/features/auth/add_supplier/presentation/pages/add_supplier.dart';
 import 'package:obour/features/auth/login/presentation/pages/login_role_screen.dart';
 import 'package:obour/features/auth/login/presentation/pages/login_screen.dart';
@@ -7,6 +8,7 @@ import 'package:obour/features/auth/login/presentation/pages/roles_screen.dart';
 import 'package:obour/features/auth/reset_password/presentation/pages/reset_password_screen.dart';
 import 'package:obour/features/auth/sign_up/presentation/pages/sign_up_screen.dart';
 import 'package:obour/features/auth/sign_up/presentation/pages/sign_up_second_screen.dart';
+import 'package:obour/features/home/presentation/pages/home_screen.dart';
 import 'package:obour/features/intro_pages/presentation/pages/first_intro_screen.dart';
 import 'package:obour/features/intro_pages/presentation/pages/second_intro_screen.dart';
 import 'package:obour/features/splash/presentation/pages/splash_screen.dart';
@@ -23,6 +25,7 @@ class RoutesName {
   static const String resetPassScreen = "resetPassScreen";
   static const String addBuyer = "addBuyer";
   static const String addSupplier="addSupplier";
+  static const String addCarrier = "addCarrier";
   static const String home = "home";
 }
 
@@ -74,31 +77,14 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => AddSupplier(),
         );
-      /*
+      case RoutesName.addCarrier:
+        return MaterialPageRoute(
+          builder: (context) => AddCarrier(),
+        );
       case RoutesName.home:
         return MaterialPageRoute(
           builder: (context) => HomeScreen(),
         );
-      case RoutesName.signature:
-    return MaterialPageRoute(
-          builder: (context) => SignatureScreen(),
-        );
-      case RoutesName.holidayDetails:
-        HolidayEntityData data =
-        settings.arguments as HolidayEntityData;
-        return MaterialPageRoute(
-          builder: (context) => HolidayDetailsScreen(args: data),
-        );
-      case RoutesName.addHoliday:
-        return MaterialPageRoute(
-          builder: (context) => AddHolidayScreen(),
-        );
-      case RoutesName.editHoliday:
-        HolidayEntityData data =
-        settings.arguments as HolidayEntityData;
-        return MaterialPageRoute(
-          builder: (context) => EditHolidayScreen(args: data,),
-        );*/
         default:
           return MaterialPageRoute(
             builder: (context) => UnDefineScreen(),
