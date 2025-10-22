@@ -4,7 +4,7 @@ import 'package:obour/features/auth/add_carrier/presentation/pages/add_carrier.d
 import 'package:obour/features/auth/add_supplier/presentation/pages/add_supplier.dart';
 import 'package:obour/features/auth/login/presentation/pages/login_role_screen.dart';
 import 'package:obour/features/auth/login/presentation/pages/login_screen.dart';
-import 'package:obour/features/auth/login/presentation/pages/roles_screen.dart';
+import 'package:obour/features/auth/sign_up/presentation/pages/roles_screen.dart';
 import 'package:obour/features/auth/reset_password/presentation/pages/reset_password_screen.dart';
 import 'package:obour/features/auth/sign_up/presentation/pages/sign_up_screen.dart';
 import 'package:obour/features/auth/sign_up/presentation/pages/sign_up_second_screen.dart';

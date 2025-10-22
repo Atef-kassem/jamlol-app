@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/core/utils/components/drop_down_container.dart';
-import 'package:obour/features/auth/login/presentation/pages/roles_screen.dart' show RolesScreen;
+import 'package:obour/features/auth/sign_up/presentation/pages/roles_screen.dart' show RolesScreen;
 import 'package:obour/features/auth/login/presentation/widgets/bg_body.dart';
 
 class LoginRoleScreen extends StatefulWidget{

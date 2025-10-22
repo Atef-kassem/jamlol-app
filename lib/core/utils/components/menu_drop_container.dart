@@ -32,7 +32,6 @@ class _MenuDropContainerState extends State<MenuDropContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width/2.5,
       child: DropdownButtonFormField<String>(
         decoration: InputDecoration(
           hintText: widget.label,
@@ -42,6 +41,7 @@ class _MenuDropContainerState extends State<MenuDropContainer> {
           ),
           fillColor: AppColors.lightGrey,
           filled: true,
+
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(24),
             borderSide: BorderSide(color: AppColors.greyColor),
@@ -54,7 +54,7 @@ class _MenuDropContainerState extends State<MenuDropContainer> {
             borderRadius: BorderRadius.circular(24),
             borderSide: BorderSide(color: AppColors.greyColor),
           ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         ),
         value: selectedValue,
         onChanged: (value) {
@@ -65,9 +65,11 @@ class _MenuDropContainerState extends State<MenuDropContainer> {
             widget.onChanged!(value);
           }
         },
+
         dropdownColor: AppColors.lightGrey,
         iconEnabledColor: AppColors.primaryColor,
         style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 12.sp),
+        isExpanded: false,
         items: widget.list.map((category) {
           return DropdownMenuItem<String>(
             value: category,

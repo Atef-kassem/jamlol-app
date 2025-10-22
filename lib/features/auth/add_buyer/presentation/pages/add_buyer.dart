@@ -5,7 +5,7 @@ import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/core/utils/components/drop_down_container.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
 import 'package:obour/features/auth/sign_up/presentation/widgets/label_text.dart';
-import 'package:obour/features/auth/sign_up/presentation/widgets/menu_drop_container.dart';
+import 'package:obour/core/utils/components/menu_drop_container.dart';
 import 'package:obour/features/home/presentation/pages/home_screen.dart';
 
 class AddBuyer extends StatefulWidget{
@@ -73,63 +73,64 @@ class _AddBuyerState extends State<AddBuyer> {
                     SizedBox(height: 24.h),
                     LabelText(txt: "اختيار مستخدم موجود"),
                     SizedBox(height: 10.h,),
-                    DropDownContainer(txt: "بدون اختيار"),
+                    MenuDropContainer(
+                      label: 'بدون اختيار',
+                      list: statusList,
+                      initialValue: selectedStatus,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedStatus = value;
+                        });
+                      },
+                    ),
                     SizedBox(height: 24.h),
                     LabelText(txt: "المنطقه"),
                     SizedBox(height: 10.h,),
-                    DropDownContainer(txt: "اختر المنطقه"),
+                    MenuDropContainer(
+                      label: 'اختر المنطقه',
+                      list: statusList,
+                      initialValue: selectedStatus,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedStatus = value;
+                        });
+                      },
+                    ),
                     SizedBox(height: 24.h),
                     LabelText(txt: "العنوان"),
                     SizedBox(height: 10.h,),
                     TextFieldItem(controller: addressController, hint:"العنوان",
                         icon:Icons.location_city, validateTxt: "Please enter your address"),
                     SizedBox(height: 24.h),
-                    Row(
-                      mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
-                          children: [
-                            LabelText(
-                              txt: "الحالة",
-                            ),
-                            SizedBox(height: 10.h),
-                            MenuDropContainer(
-                              label: 'الحالة',
-                              list: statusList,
-                              initialValue: selectedStatus,
-                              onChanged: (value) {
-                                setState(() {
-                                  selectedStatus = value;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
-                          children: [
-                            LabelText(
-                              txt:"نوع الكيان",
-                            ),
-                            SizedBox(height: 10.h),
-                            MenuDropContainer(
-                              label: 'نوع الكيان',
-                              list:buyerTypeList,
-                              initialValue: selectedPersonType,
-                              onChanged: (value) {
-                                setState(() {
-                                  selectedPersonType = value;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
+                    LabelText(
+                      txt: "الحالة",
                     ),
+                    SizedBox(height: 10.h),
+                    MenuDropContainer(
+                      label: 'الحالة',
+                      list: statusList,
+                      initialValue: selectedStatus,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedStatus = value;
+                        });
+                      },
+                    ),
+                    SizedBox(height: 24.h),
+              LabelText(
+                txt:"نوع الكيان",
+              ),
+              SizedBox(height: 10.h),
+              MenuDropContainer(
+                label: 'نوع الكيان',
+                list:buyerTypeList,
+                initialValue: selectedPersonType,
+                onChanged: (value) {
+                  setState(() {
+                    selectedPersonType = value;
+                  });
+                },
+              ),
                     SizedBox(height: 40.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

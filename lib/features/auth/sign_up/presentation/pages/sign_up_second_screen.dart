@@ -12,8 +12,9 @@ import 'package:obour/features/auth/add_carrier/presentation/pages/add_carrier.d
 import 'package:obour/features/auth/add_supplier/presentation/pages/add_supplier.dart';
 import 'package:obour/features/auth/reset_password/presentation/pages/reset_password_screen.dart';
 import 'package:obour/features/auth/sign_up/presentation/manager/sign_up_cubit.dart';
+import 'package:obour/features/auth/sign_up/presentation/pages/roles_screen.dart';
 import 'package:obour/features/auth/sign_up/presentation/widgets/label_text.dart';
-import 'package:obour/features/auth/sign_up/presentation/widgets/menu_drop_container.dart';
+import 'package:obour/core/utils/components/menu_drop_container.dart';
 import 'package:obour/features/auth/sign_up/presentation/widgets/upload_image_field.dart';
 
 class SignUpSecondScreen extends StatefulWidget {
@@ -28,9 +29,9 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   List<String> statusList = ["active", "inActive"];
-  String? selectedStatus="active";
+  String? selectedStatus = "active";
   List<String> personTypeList = ["admin", "supplier", "client", "carrier"];
-  String? selectedPersonType="client";
+  String? selectedPersonType = "client";
   var formKey = GlobalKey<FormState>();
   Map<String, dynamic>? args;
 
@@ -89,48 +90,19 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                               SizedBox(height: 10.h),
                               UploadImageField(),
                               SizedBox(height: 24.h),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      LabelText(txt: "الحالة"),
-                                      SizedBox(height: 10.h),
-                                      MenuDropContainer(
-                                        label: 'الحالة',
-                                        list: statusList,
-                                        initialValue: selectedStatus,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            selectedStatus = value;
-                                          });
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      LabelText(txt: "الدور"),
-                                      SizedBox(height: 10.h),
-                                      MenuDropContainer(
-                                        label: 'الدور',
-                                        list: personTypeList,
-                                        initialValue: selectedPersonType,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            selectedPersonType = value;
-                                          });
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              LabelText(txt: "الحالة"),
+                              SizedBox(height: 10.h),
+                              MenuDropContainer(
+                                label: 'الحالة',
+                                list: statusList,
+                                initialValue: selectedStatus,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedStatus = value;
+                                  });
+                                },
                               ),
+
                               SizedBox(height: 40.h),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -149,49 +121,26 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                           context: context,
                                           message: 'SignUp successfully',
                                         );
-                                        if (selectedPersonType == "supplier") {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  AddSupplier(),
-                                            ),
-                                          );
-                                        } else if (selectedPersonType == "client") {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  AddBuyer(),
-                                            ),
-                                          );
-                                        }else if (selectedPersonType == "carrier") {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  AddCarrier(),
-                                            ),
-                                          );
-                                        } else {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ResetPasswordScreen(),
-                                            ),
-                                          );
-                                        }
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => RolesScreen(),
+                                          ),
+                                        );
                                       }
                                     },
                                     child: InkWell(
                                       onTap: () {
                                         if (formKey.currentState?.validate() ==
                                             true) {
-                                          print(" selectedStatus $selectedStatus" );
-                                          print(" name ${ args?["name"] }" );
-                                          print(" selectedperson type $selectedPersonType" );
-                                          print(" address ${ args?["address"] }" );
+                                          print(
+                                            " selectedStatus $selectedStatus",
+                                          );
+                                          print(" name ${args?["name"]}");
+                                          print(
+                                            " selectedperson type $selectedPersonType",
+                                          );
+                                          print(" address ${args?["address"]}");
                                           SignUpCubit.get(context).signUp(
                                             roleId: 1,
                                             name: args?["name"] ?? "",
@@ -201,8 +150,7 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                             password: passwordController.text,
                                             phone: phoneController.text,
                                             status: selectedStatus ?? "",
-                                            personType:
-                                                selectedPersonType ?? "",
+                                            personType: "null",
                                           );
                                         }
                                       },
