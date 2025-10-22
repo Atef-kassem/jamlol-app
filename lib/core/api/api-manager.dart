@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:obour/core/cache/shared_preferences.dart';
 import 'package:obour/core/utils/constants.dart';
 
 class ApiManager {
@@ -6,21 +7,17 @@ class ApiManager {
 
   ApiManager({Dio? dioInstance}) : dio = dioInstance ?? Dio() {
     dio.options.headers = {"Accept": "*/*", "Content-Type": "application/json"};
-
-    /*dio.interceptors.add(
+    dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          final prefs = await SharedPreferences.getInstance();
-          final token = prefs.getString("token");
-
+          final String? token =CacheData.getData(key: "token");
           if (token != null && token.isNotEmpty) {
             options.headers["Authorization"] = "Bearer $token";
           }
-
           return handler.next(options);
         },
       ),
-    );*/
+    );
   }
 
   Options _options({Map<String, dynamic>? extraHeaders}) {

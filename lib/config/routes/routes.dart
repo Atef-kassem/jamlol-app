@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:obour/features/auth/add_buyer/presentation/pages/add_buyer.dart';
 import 'package:obour/features/auth/add_carrier/presentation/pages/add_carrier.dart';
 import 'package:obour/features/auth/add_supplier/presentation/pages/add_supplier.dart';
-import 'package:obour/features/auth/login/presentation/pages/login_role_screen.dart';
 import 'package:obour/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:obour/features/auth/sign_up/presentation/pages/roles_screen.dart';
 import 'package:obour/features/auth/reset_password/presentation/pages/reset_password_screen.dart';
@@ -20,7 +19,6 @@ class RoutesName {
   static const String login = "login";
   static const String signUp = "signUp";
   static const String secondSignUp = "secondSignUp";
-  static const String loginRole = "loginRole";
   static const String rolesScreen = "rolesScreen";
   static const String resetPassScreen = "resetPassScreen";
   static const String addBuyer = "addBuyer";
@@ -47,10 +45,6 @@ class AppRouter {
       case RoutesName.login:
         return MaterialPageRoute(
           builder: (context) => LoginScreen(),
-        );
-      case RoutesName.loginRole:
-        return MaterialPageRoute(
-          builder: (context) => LoginRoleScreen(),
         );
       case RoutesName.rolesScreen:
         return MaterialPageRoute(

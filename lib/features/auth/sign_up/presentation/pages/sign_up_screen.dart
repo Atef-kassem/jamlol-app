@@ -4,7 +4,7 @@ import 'package:obour/config/routes/routes.dart';
 import 'package:obour/core/utils/app_colors.dart';
 import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/features/auth/login/presentation/widgets/bg_body.dart';
-import 'package:obour/features/auth/sign_up/presentation/widgets/label_text.dart';
+import 'package:obour/core/utils/components/label_text.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
 
 

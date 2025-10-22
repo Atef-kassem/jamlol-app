@@ -4,7 +4,7 @@ import 'package:obour/core/helper/user_manager/user_manager.dart';
 import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/core/utils/components/drop_down_container.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
-import 'package:obour/features/auth/sign_up/presentation/widgets/label_text.dart';
+import 'package:obour/core/utils/components/label_text.dart';
 import 'package:obour/core/utils/components/menu_drop_container.dart';
 import 'package:obour/features/home/presentation/pages/home_screen.dart';
 
@@ -64,6 +64,7 @@ class _AddCarrierState extends State<AddCarrier> {
                     MenuDropContainer(
                       label: 'بدون اختيار',
                       list: statusList,
+                      itemLabel:(item) => item,
                       initialValue: selectedStatus,
                       onChanged: (value) {
                         setState(() {
@@ -104,6 +105,7 @@ class _AddCarrierState extends State<AddCarrier> {
                     MenuDropContainer(
                       label: 'الحالة',
                       list: statusList,
+                      itemLabel:(item) => item,
                       initialValue: selectedStatus,
                       onChanged: (value) {
                         setState(() {
@@ -118,6 +120,7 @@ class _AddCarrierState extends State<AddCarrier> {
                     SizedBox(height: 10.h),
                     MenuDropContainer(
                       label: 'نوع الناقل',
+                      itemLabel:(item) => item,
                       list:supplierTypeList,
                       initialValue: selectedPersonType,
                       onChanged: (value) {
@@ -132,6 +135,7 @@ class _AddCarrierState extends State<AddCarrier> {
                     MenuDropContainer(
                       label: 'اختر المنطقه',
                       list: statusList,
+                      itemLabel:(item) => item,
                       initialValue: selectedStatus,
                       onChanged: (value) {
                         setState(() {

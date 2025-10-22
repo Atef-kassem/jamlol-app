@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:obour/core/helper/user_manager/user_manager.dart';
 import 'package:obour/core/utils/components/custom_button.dart';
-import 'package:obour/core/utils/components/drop_down_container.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
-import 'package:obour/features/auth/sign_up/presentation/widgets/label_text.dart';
+import 'package:obour/core/utils/components/label_text.dart';
 import 'package:obour/core/utils/components/menu_drop_container.dart';
 import 'package:obour/features/home/presentation/pages/home_screen.dart';
 
@@ -76,6 +75,7 @@ class _AddBuyerState extends State<AddBuyer> {
                     MenuDropContainer(
                       label: 'بدون اختيار',
                       list: statusList,
+                      itemLabel:(item) => item,
                       initialValue: selectedStatus,
                       onChanged: (value) {
                         setState(() {
@@ -89,6 +89,7 @@ class _AddBuyerState extends State<AddBuyer> {
                     MenuDropContainer(
                       label: 'اختر المنطقه',
                       list: statusList,
+                      itemLabel:(item) => item,
                       initialValue: selectedStatus,
                       onChanged: (value) {
                         setState(() {
@@ -109,6 +110,7 @@ class _AddBuyerState extends State<AddBuyer> {
                     MenuDropContainer(
                       label: 'الحالة',
                       list: statusList,
+                      itemLabel:(item) => item,
                       initialValue: selectedStatus,
                       onChanged: (value) {
                         setState(() {
@@ -124,6 +126,7 @@ class _AddBuyerState extends State<AddBuyer> {
               MenuDropContainer(
                 label: 'نوع الكيان',
                 list:buyerTypeList,
+                itemLabel:(item) => item,
                 initialValue: selectedPersonType,
                 onChanged: (value) {
                   setState(() {

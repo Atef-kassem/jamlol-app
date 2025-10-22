@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:obour/core/cache/shared_preferences.dart';
 import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/core/utils/components/failure_dialog.dart';
 import 'package:obour/core/utils/components/loading_widget.dart';
@@ -10,10 +11,11 @@ import 'package:obour/core/utils/components/text_field_item.dart';
 import 'package:obour/features/auth/add_buyer/presentation/pages/add_buyer.dart';
 import 'package:obour/features/auth/add_carrier/presentation/pages/add_carrier.dart';
 import 'package:obour/features/auth/add_supplier/presentation/pages/add_supplier.dart';
+import 'package:obour/features/auth/login/presentation/manager/login_cubit.dart';
 import 'package:obour/features/auth/reset_password/presentation/pages/reset_password_screen.dart';
 import 'package:obour/features/auth/sign_up/presentation/manager/sign_up_cubit.dart';
 import 'package:obour/features/auth/sign_up/presentation/pages/roles_screen.dart';
-import 'package:obour/features/auth/sign_up/presentation/widgets/label_text.dart';
+import 'package:obour/core/utils/components/label_text.dart';
 import 'package:obour/core/utils/components/menu_drop_container.dart';
 import 'package:obour/features/auth/sign_up/presentation/widgets/upload_image_field.dart';
 
@@ -43,9 +45,16 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return MultiBlocProvider(
+  providers: [
+    BlocProvider(
       create: (context) => SignUpCubit(),
-      child: BlocBuilder<SignUpCubit, SignUpState>(
+),
+    BlocProvider(
+      create: (context) => LoginCubit(),
+    ),
+  ],
+  child: BlocBuilder<SignUpCubit, SignUpState>(
         builder: (context, state) {
           bool isLoading = state is SignUpLoading;
           return Stack(
@@ -71,12 +80,6 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                 validateTxt: "Please enter your phone number",
                               ),
                               SizedBox(height: 24.h),
-                              LabelText(txt: "كلمه المرور"),
-                              SizedBox(height: 10.h),
-                              PasswordInputField(
-                                controller: passwordController,
-                              ),
-                              SizedBox(height: 24.h),
                               LabelText(txt: "البريد الالكتروني"),
                               SizedBox(height: 10.h),
                               TextFieldItem(
@@ -84,6 +87,12 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                 hint: "البريد الالكتروني",
                                 icon: Icons.text_fields,
                                 validateTxt: "Please enter your email",
+                              ),
+                              SizedBox(height: 24.h),
+                              LabelText(txt: "كلمه المرور"),
+                              SizedBox(height: 10.h),
+                              PasswordInputField(
+                                controller: passwordController,
                               ),
                               SizedBox(height: 24.h),
                               LabelText(txt: "ارفع صورة"),
@@ -95,6 +104,7 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                               MenuDropContainer(
                                 label: 'الحالة',
                                 list: statusList,
+                                itemLabel:(item) => item,
                                 initialValue: selectedStatus,
                                 onChanged: (value) {
                                   setState(() {
@@ -127,6 +137,9 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
                                             builder: (context) => RolesScreen(),
                                           ),
                                         );
+                                        LoginCubit.get(context).login(email: emailController.text,
+                                          password: passwordController.text,);
+                                        print("token${CacheData.getData(key: "token")}");
                                       }
                                     },
                                     child: InkWell(
@@ -172,6 +185,6 @@ class _SignUpSecondScreenState extends State<SignUpSecondScreen> {
           );
         },
       ),
-    );
+);
   }
 }

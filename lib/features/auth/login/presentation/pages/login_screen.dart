@@ -4,14 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:obour/core/utils/app_colors.dart';
 import 'package:obour/core/utils/components/custom_button.dart';
 import 'package:obour/core/utils/components/failure_dialog.dart';
+import 'package:obour/core/utils/components/label_text.dart';
 import 'package:obour/core/utils/components/loading_widget.dart';
 import 'package:obour/core/utils/components/snack_bar_helper.dart';
 import 'package:obour/core/utils/components/password_input_field.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
 import 'package:obour/features/auth/login/presentation/manager/login_cubit.dart';
-import 'package:obour/features/auth/login/presentation/pages/login_role_screen.dart';
 import 'package:obour/features/auth/login/presentation/widgets/bg_body.dart';
 import 'package:obour/features/auth/sign_up/presentation/pages/sign_up_screen.dart';
+import 'package:obour/features/home/presentation/pages/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -87,12 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ],
                                     ),
                                     SizedBox(height: 16.h),
-                                    Text(
-                                      "البريد الالكتروني",
-                                      style: Theme.of(
-                                        context,
-                                      ).textTheme.bodySmall,
-                                    ),
+                                   LabelText(txt: "البريد الالكتروني"),
                                     SizedBox(height: 10.h),
                                     TextFieldItem(
                                       controller: emailController,
@@ -101,12 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       validateTxt: "Please enter your email",
                                     ),
                                     SizedBox(height: 24.h),
-                                    Text(
-                                      "كلمه المرور",
-                                      style: Theme.of(
-                                        context,
-                                      ).textTheme.bodySmall,
-                                    ),
+                                    LabelText(txt: "كلمه المرور"),
                                     SizedBox(height: 10.h),
                                     PasswordInputField(
                                       controller: passwordController,
@@ -149,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  LoginRoleScreen(),
+                                                  HomeScreen(),
                                             ),
                                           );
                                         }
@@ -172,27 +163,37 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ),
                                     ),
                                     SizedBox(height: 24.h),
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen(),));
-                                          },
-                                          child: Text(
-                                            "ليس لديك حساب؟ انشاء حساب جديد",
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen(),));
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "ليس لديك حساب؟ ",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodySmall!
                                                 .copyWith(
-                                              color:AppColors.primaryColor,
-                                              fontSize: 12.sp,
+                                              fontSize: 11.sp,
                                               fontWeight: FontWeight.w700
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Text(
+                                            "انشاء حساب جديد",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .copyWith(
+                                                color:AppColors.primaryColor,
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w700
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),

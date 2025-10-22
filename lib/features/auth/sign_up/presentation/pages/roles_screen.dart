@@ -7,7 +7,6 @@ import 'package:obour/features/auth/add_carrier/presentation/pages/add_carrier.d
 import 'package:obour/features/auth/add_supplier/presentation/pages/add_supplier.dart';
 import 'package:obour/features/auth/sign_up/presentation/widgets/role_bg.dart';
 import 'package:obour/features/auth/sign_up/presentation/widgets/role_item.dart';
-import 'package:obour/features/auth/sign_up/presentation/pages/sign_up_screen.dart';
 import 'package:obour/features/home/presentation/pages/home_screen.dart';
 
 
