@@ -2,9 +2,9 @@ class EndPoints{
   static const String login= "/auth/login";
   static const String signUp= "/auth/signup";
   static const String getRegions="/Regions";
-  static const String addSignature = "/Api/Add_signature";
-  static const String getAgazaList = "/Api/Get_agaza_List";
-  static const String getAgazaData = "/Api/Get_Agaza_data";
+  static const String addSupplier = "/suppliers";
+  static const String addCarrier = "/naqlens";
+  static const String addClient = "/clients";
   static const String addAgaza = "/Api/Add_Agaza";
   static const String getAgazaType = "/Api/Agazat_types";
   static const String editAgaza = "/Api/Edit_Agaza";
