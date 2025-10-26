@@ -45,7 +45,7 @@ class MyThemeData {
       shadowColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
       titleTextStyle: GoogleFonts.tajawal(
-        fontSize: 22.sp,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w700,
         color: Colors.black,
       ),

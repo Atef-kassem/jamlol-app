@@ -9,6 +9,7 @@ import 'package:obour/core/utils/components/loading_widget.dart';
 import 'package:obour/core/utils/components/snack_bar_helper.dart';
 import 'package:obour/core/utils/components/password_input_field.dart';
 import 'package:obour/core/utils/components/text_field_item.dart';
+import 'package:obour/features/admin/buyer_management/presentation/pages/buyer_management_screen.dart';
 import 'package:obour/features/auth/login/presentation/manager/login_cubit.dart';
 import 'package:obour/features/auth/login/presentation/widgets/bg_body.dart';
 import 'package:obour/features/auth/sign_up/presentation/pages/sign_up_screen.dart';
@@ -140,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  HomeScreen(),
+                                                  BuyersManagementScreen(),
                                             ),
                                           );
                                         }
