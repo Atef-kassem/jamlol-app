@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:obour/features/admin/buyer_management/presentation/pages/buyer_management_screen.dart';
+import 'package:obour/features/admin/supplier_management/presentation/pages/supplier_management_screen.dart';
 import 'package:obour/features/auth/add_buyer/presentation/pages/add_buyer.dart';
 import 'package:obour/features/auth/add_carrier/presentation/pages/add_carrier.dart';
 import 'package:obour/features/auth/add_supplier/presentation/pages/add_supplier.dart';
@@ -25,6 +27,9 @@ class RoutesName {
   static const String addSupplier="addSupplier";
   static const String addCarrier = "addCarrier";
   static const String home = "home";
+  static const String supplierManage="supplierManage";
+  static const String buyerManage="buyerManage";
+  static const String carrierManage="carrierManage";
 }
 
 class AppRouter {
@@ -78,6 +83,14 @@ class AppRouter {
       case RoutesName.home:
         return MaterialPageRoute(
           builder: (context) => HomeScreen(),
+        );
+      case RoutesName.supplierManage:
+        return MaterialPageRoute(
+          builder: (context) => SupplierManagementScreen(),
+        );
+      case RoutesName.buyerManage:
+        return MaterialPageRoute(
+          builder: (context) => BuyersManagementScreen(),
         );
         default:
           return MaterialPageRoute(

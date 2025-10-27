@@ -15,17 +15,17 @@ class SearchBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Expanded(
       child: Container(
-        height: 40.h,
+        height: 36.h,
         child: TextFormField(
           controller: controller,
           style: Theme.of(context).textTheme.bodySmall!.copyWith(
-            fontSize: 12.sp
+            fontSize: 10.sp
           ),
           onFieldSubmitted: onSearch,
           decoration: InputDecoration(
             hintText: "بحث",
             hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-              color: AppColors.darkGrey,fontSize: 12.sp
+              color: AppColors.darkGrey,fontSize: 10.sp
             ),
             contentPadding: EdgeInsets.all(0),
             filled: true,
