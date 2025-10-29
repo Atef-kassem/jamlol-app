@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:obour/core/utils/app_colors.dart';
+import 'package:obour/core/utils/components/get_data_failure_widget.dart';
+import 'package:obour/core/utils/components/get_empty_data_widget.dart';
+import 'package:obour/core/utils/components/loading_widget.dart';
 import 'package:obour/features/admin/buyer_management/presentation/widgets/buyer_row.dart';
 import 'package:obour/features/admin/buyer_management/presentation/widgets/details_data_row.dart';
 import 'package:obour/features/admin/buyer_management/presentation/widgets/label_search_row.dart';
 import 'package:obour/features/admin/buyer_management/presentation/widgets/table_title_row.dart';
+import 'package:obour/features/admin/supplier_management/presentation/manager/get_suppliers/get_suppliers_cubit.dart';
 import 'package:obour/features/admin/supplier_management/presentation/widgets/supplier_label_search_row.dart';
 import 'package:obour/features/admin/supplier_management/presentation/widgets/supplier_row.dart';
 
@@ -19,13 +24,6 @@ class _SupplierManagementScreenState extends State<SupplierManagementScreen> {
   TextEditingController searchController=TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final List<Supplier> suppliers = [
-      Supplier(name: "احمد عمر", phone: "01029876765", address: "شبين الكوم",idNum: "00998765346",type: "فرد"),
-      Supplier(name: "احمد عمر", phone: "01029876765", address: "شبين الكوم",idNum: "00998765346",type: "فرد"),
-      Supplier(name: "احمد عمر", phone: "01029876765", address: "شبين الكوم",idNum: "00998765346",type: "فرد"),
-      Supplier(name: "احمد عمر", phone: "01029876765", address: "شبين الكوم",idNum: "00998765346",type: "فرد"),
-    ];
-
     return Scaffold(
       backgroundColor:AppColors.lightGrey,
       appBar: AppBar(
@@ -58,46 +56,62 @@ class _SupplierManagementScreenState extends State<SupplierManagementScreen> {
         children: [
           DetailsDataRow(txt: ["إجمالي الموردين","الموردين النشطين","الموردين غير النشطين"]),
           SizedBox(height: 24.h),
-          SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Container(
-              margin: EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(24.r),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: SupplierLabelSearchRow(searchController: searchController,),
-                  ),
-                  SizedBox(height: 8.h),
-                  TableTitleRow(title: ["اسم المورد","رقم الجوال","النوع","رقم الهويه","العنوان"],),
-                  SizedBox(height: 8.h),
-                  ...suppliers.map((suppliers) => SupplierRow(supplier:suppliers)).toList(),
-                ],
-              ),
-            ),
+          BlocProvider(
+            create: (context) => GetSuppliersCubit()..getAllSuppliers(),
+            child: BlocBuilder<GetSuppliersCubit, GetSuppliersState>(
+                builder: (context, state) {
+                  if (state is GetAllSuppliersLoading) {
+                    return LoadingWidget();
+                  }
+                  else if (state is GetAllSuppliersFailure) {
+                    return GetDataFailureWidget(txt: state.failures.errorMsg);
+                  } else if (state is GetAllSuppliersSuccess) {
+                    final suppliers = context.read<GetSuppliersCubit>().suppliers;
+                    if (suppliers.isEmpty) {
+                      return GetEmptyDataWidget(txt: "no suppliers found");
+                    }
+                    return Expanded(
+                      child: SingleChildScrollView(
+                        child: Container(
+                          margin: EdgeInsets.all(4),
+                          padding: EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(24.r),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(12),
+                                child: LabelSearchRow(
+                                  searchController: searchController,
+                                ),
+                              ),
+                              SizedBox(height: 8.h),
+                              TableTitleRow(
+                                title: [
+                                  "اسم المورد",
+                                  "رقم الجوال",
+                                  "النوع",
+                                  "رقم الهوية",
+                                  "العنوان",
+                                ],
+                              ),
+                              SizedBox(height: 8.h),
+                              ...suppliers.map((supplier) => SupplierRow(supplier: supplier)).toList(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                  return SizedBox();
+                }),
           ),
         ],
       ),
     );
   }
 }
-class Supplier {
-  final String name;
-  final String phone;
-  final String address;
-  final String idNum;
-  final String type;
 
-  Supplier({
-    required this.name,
-    required this.phone,
-    required this.address,
-    required this.idNum,
-    required this.type,
-  });
-}

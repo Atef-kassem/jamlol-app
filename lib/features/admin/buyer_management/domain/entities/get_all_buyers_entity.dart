@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class GerAllBuyersEntity extends Equatable{
- const GerAllBuyersEntity({
+class GetAllBuyersEntity extends Equatable{
+ const GetAllBuyersEntity({
       this.status, 
       this.results, 
       this.pagination, 
@@ -10,7 +10,7 @@ class GerAllBuyersEntity extends Equatable{
  final String? status;
  final int? results;
  final GerAllBuyersPaginationEntity? pagination;
- final List<GerAllBuyersClientsEntity>? clients;
+ final List<GetAllBuyersClientsEntity>? clients;
 
 
   @override
@@ -18,8 +18,8 @@ class GerAllBuyersEntity extends Equatable{
 
 }
 
-class GerAllBuyersClientsEntity extends Equatable{
- const GerAllBuyersClientsEntity({
+class GetAllBuyersClientsEntity extends Equatable{
+ const GetAllBuyersClientsEntity({
       this.id, 
       this.name, 
       this.jwal, 
@@ -38,7 +38,7 @@ class GerAllBuyersClientsEntity extends Equatable{
  final String? active;
  final String? createdAt;
  final String? updatedAt;
- final  GerAllBuyersRegionEntity? region;
+ final  GetAllBuyersRegionEntity? region;
 
   @override
   List<Object?> get props => [id,name,jwal,address,regionId,active,createdAt,updatedAt,region];
@@ -46,8 +46,8 @@ class GerAllBuyersClientsEntity extends Equatable{
 
 }
 
-class GerAllBuyersRegionEntity extends Equatable{
- const GerAllBuyersRegionEntity({
+class GetAllBuyersRegionEntity extends Equatable{
+ const GetAllBuyersRegionEntity({
       this.id, 
       this.name,});
 

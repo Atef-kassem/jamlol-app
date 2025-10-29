@@ -1,6 +1,6 @@
-import 'package:obour/features/admin/buyer_management/domain/entities/ger_all_buyers_entity.dart';
+import 'package:obour/features/admin/buyer_management/domain/entities/get_all_buyers_entity.dart';
 
-class GetAllBuyerModel extends GerAllBuyersEntity {
+class GetAllBuyerModel extends GetAllBuyersEntity {
   const GetAllBuyerModel({
     super.status,
     super.results,
@@ -33,7 +33,7 @@ class GetAllBuyerModel extends GerAllBuyersEntity {
   }
 }
 
-class ClientModel extends GerAllBuyersClientsEntity {
+class ClientModel extends GetAllBuyersClientsEntity {
   const ClientModel({
     super.id,
     super.name,
@@ -77,7 +77,7 @@ class ClientModel extends GerAllBuyersClientsEntity {
   }
 }
 
-class RegionModel extends GerAllBuyersRegionEntity {
+class RegionModel extends GetAllBuyersRegionEntity {
   const RegionModel({
     super.id,
     super.name,
