@@ -5,37 +5,36 @@ import 'package:obour/core/api/end_points.dart';
 import 'package:obour/core/api/status_code_handler.dart';
 import 'package:obour/core/errors/error_handler.dart';
 import 'package:obour/core/errors/failures.dart';
-import 'package:obour/features/admin/supplier_management/data/data_sources/remote/get_suppliers_remote_ds.dart';
-import 'package:obour/features/admin/supplier_management/data/models/get_all_suppliers_model.dart';
+import 'package:obour/features/admin/carrier_management/data/models/get_all_carriers_model.dart';
+import 'package:obour/features/admin/carrier_management/data/remote/get_carriers_remote_ds.dart';
 
 
-
-class GetSuppliersRemoteDsImpl implements GetSuppliersRemoteDs{
+class GetCarriersRemoteDsImpl implements GetCarriersRemoteDs{
   final ApiManager apiManager;
 
-  GetSuppliersRemoteDsImpl(this.apiManager);
+  GetCarriersRemoteDsImpl(this.apiManager);
 
 
   @override
-  Future<Either<Failures, GetAllSuppliersModel>> getSuppliers() async{
+  Future<Either<Failures, GetAllCarriersModel>> getCarriers() async{
     try {
-      final response = await apiManager.getData(EndPoints.getAllSupplier);
+      final response = await apiManager.getData(EndPoints.getAllCarrier);
 
       debugPrint(
-        '[get Suppliers RemoteDs] status=${response.statusCode} data=${response.data}',
+        '[Get Carriers RemoteDs] status=${response.statusCode} data=${response.data}',
       );
 
       if (response.statusCode == 200||response.statusCode == 201) {
-        GetAllSuppliersModel model = GetAllSuppliersModel.fromJson(response.data);
+        GetAllCarriersModel model = GetAllCarriersModel.fromJson(response.data);
         if (model.status == "success") {
           return Right(model);
         } else {
-          final errorMessage = response.data['message'] ?? "Get All Suppliers failed.";
+          final errorMessage = response.data['message'] ?? "Get All Carriers failed.";
           return Left(ServerFailure(errorMessage));
         }
       }
       debugPrint(
-        '[Get All Suppliers RemoteDs failure] status=${response.statusCode} data=${response.data}',
+        '[Get All Carriers RemoteDs failure] status=${response.statusCode} data=${response.data}',
       );
       return Left(
         StatusCodeHandler.handleStatusCode(

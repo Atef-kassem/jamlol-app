@@ -5,6 +5,7 @@ class EndPoints{
   static const String addSupplier = "/suppliers";
   static const String getAllSupplier = "/suppliers";
   static const String addCarrier = "/naqlens";
+  static const String getAllCarrier = "/naqlens";
   static const String addClient = "/clients";
   static const String getAllClients = "/clients";
 }
